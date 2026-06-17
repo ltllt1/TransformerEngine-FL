@@ -36,9 +36,6 @@ _PATCH_CALLS: list[tuple[object, str, Callable[..., object]]] = [
     # TODO: Add other patches for NPU.
 ]
 
-#def get_npu_device_properties(device=None):
-#    return (9, 0)
-
 def apply_patch() -> None:
     """Apply NPU Python-side patches (idempotent, best-effort)."""
     try:
