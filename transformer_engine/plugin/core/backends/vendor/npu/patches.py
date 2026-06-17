@@ -39,10 +39,6 @@ _PATCH_CALLS: list[tuple[object, str, Callable[..., object]]] = [
 def apply_patch() -> None:
     """Apply NPU Python-side patches (idempotent, best-effort)."""
     try:
-        #from .npu import NPUBackend
-
-        #if not NPUBackend().is_available():
-        #    return
         import torch_npu
         if not torch_npu.npu.is_available():
             return
