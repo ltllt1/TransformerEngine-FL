@@ -22,11 +22,8 @@ def get_npu_device_properties(device=None):
         uuid="fake-uuid-12345"
     )
 
-# Patches: (parent_object, attribute_name, replacement_callable)
 _PATCH_CALLS: list[tuple[object, str, Callable[..., object]]] = [
     # We do not recommend replace is_available, due to its device-related behavior.
-    # (torch.cuda, "is_available", torch.musa.is_available),
-    #(torch.cuda, "get_device_properties", torch_npu.npu.get_device_properties),
     (torch.cuda, "get_device_properties", get_npu_device_properties),
     (torch.cuda, "device", torch_npu.npu.device),
     (torch.cuda, "current_device", torch_npu.npu.current_device),
