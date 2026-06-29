@@ -11,7 +11,7 @@ from importlib import metadata
 import transformer_engine.common
 
 import torch
-1
+
 # Public, simple global (kept for backward compatibility).
 TE_DEVICE_TYPE = "cuda"
 TE_PLATFORM = torch.cuda

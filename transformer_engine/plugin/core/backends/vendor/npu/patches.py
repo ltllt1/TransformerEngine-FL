@@ -5,15 +5,18 @@ from __future__ import annotations
 from collections.abc import Callable
 
 import torch
+
 try:
     import torch_npu
 except ImportError:
     pass
-1
+
 from types import SimpleNamespace
+
 
 def _noop(*args, **kwargs):
     return None
+
 
 def get_npu_device_properties(device=None):
     return SimpleNamespace(
@@ -22,8 +25,9 @@ def get_npu_device_properties(device=None):
         major=9,
         minor=0,
         multi_processor_count=80,
-        uuid="fake-uuid-12345"
+        uuid="fake-uuid-12345",
     )
+
 
 _PATCH_CALLS: list[tuple[object, str, Callable[..., object]]] = [
     # We do not recommend replace is_available, due to its device-related behavior.
@@ -39,10 +43,12 @@ _PATCH_CALLS: list[tuple[object, str, Callable[..., object]]] = [
     # TODO: Add other patches for NPU.
 ]
 
+
 def apply_patch() -> None:
     """Apply NPU Python-side patches (idempotent, best-effort)."""
     try:
         import torch_npu
+
         if not torch_npu.npu.is_available():
             return
 
