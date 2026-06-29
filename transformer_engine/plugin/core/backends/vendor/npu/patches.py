@@ -9,7 +9,7 @@ try:
     import torch_npu
 except ImportError:
     pass
-
+1
 from types import SimpleNamespace
 
 def _noop(*args, **kwargs):
