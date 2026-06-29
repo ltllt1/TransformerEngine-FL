@@ -5,7 +5,10 @@ from __future__ import annotations
 from collections.abc import Callable
 
 import torch
-import torch_npu
+try:
+    import torch_npu
+except ImportError:
+    pass
 
 from types import SimpleNamespace
 
